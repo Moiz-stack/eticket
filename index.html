@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legislative Theatre 2026 – Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    background: #0a0a0f;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    padding: 40px 20px;
+  }
+
+  h1.page-title {
+    color: #c9a84c;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    opacity: 0.7;
+  }
+
+  /* TICKET WRAPPER */
+  .ticket {
+    width: 860px;
+    max-width: 100%;
+    display: flex;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+      0 0 0 1px #c9a84c44,
+      0 0 60px #1a1030,
+      0 20px 60px rgba(0,0,0,0.6);
+  }
+
+  /* LEFT MAIN SECTION */
+  .ticket-main {
+    flex: 1;
+    background: linear-gradient(135deg, #0d0820 0%, #130c2e 40%, #0e1a30 100%);
+    padding: 32px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle smoke/glow background */
+  .ticket-main::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: -40px;
+    width: 320px; height: 320px;
+    background: radial-gradient(ellipse, #2a1a6e55 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .ticket-main::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: 40px;
+    width: 240px; height: 240px;
+    background: radial-gradient(ellipse, #0e4a7055 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* TOP ROW */
+  .top-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .org-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .org-line {
+    font-size: 0.62rem;
+    color: #8899bb;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .org-line span {
+    color: #c9a84c;
+  }
+
+  .ticket-type-badge {
+    background: linear-gradient(135deg, #c9a84c, #f0d080);
+    color: #0a0a0f;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+
+  /* TITLE BLOCK */
+  .title-block {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 6px;
+  }
+
+  .title-eyebrow {
+    font-size: 0.6rem;
+    color: #c9a84c;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .event-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.4rem;
+    letter-spacing: 0.05em;
+    line-height: 0.95;
+    background: linear-gradient(180deg, #ffffff 0%, #c8d8f0 60%, #8899cc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .year-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.25em;
+    color: #c9a84c;
+    margin-top: -2px;
+  }
+
+  .play-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: #ddc9f0;
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  /* INFO ROW */
+  .info-row {
+    display: flex;
+    gap: 28px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .info-label {
+    font-size: 0.55rem;
+    color: #c9a84c;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .info-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: #ffffff;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+  }
+
+  .info-value.highlight {
+    background: linear-gradient(135deg, #f0d080, #c9a84c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* HORIZONTAL RULE */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c9a84c55, #4466aa55, transparent);
+    margin: 20px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* NAME SECTION */
+  .name-section {
+    position: relative;
+    z-index: 2;
+  }
+
+  .name-label {
+    font-size: 0.55rem;
+    color: #8899bb;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .name-field {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .name-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2a1a6e, #1a3a60);
+    border: 1.5px solid #c9a84c88;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #c9a84c;
+    flex-shrink: 0;
+  }
+
+  .name-input-area {
+    flex: 1;
+    border-bottom: 1.5px solid #c9a84c66;
+    padding-bottom: 5px;
+  }
+
+  .attendee-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: #fff;
+    letter-spacing: 0.1em;
+  }
+
+  .attendee-name.blank {
+    color: #44557766;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .attendee-role {
+    font-size: 0.6rem;
+    color: #8899bb;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  /* DIRECTOR LINE */
+  .director-line {
+    font-size: 0.62rem;
+    color: #7788aa;
+    margin-top: 10px;
+    position: relative;
+    z-index: 2;
+  }
+  .director-line span {
+    color: #c9a84c;
+    font-weight: 600;
+  }
+
+  /* TEAR LINE */
+  .tear-line {
+    width: 1px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #c9a84c44 0px,
+      #c9a84c44 8px,
+      transparent 8px,
+      transparent 16px
+    );
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tear-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #0a0a0f;
+    border: 1px solid #c9a84c44;
+    flex-shrink: 0;
+  }
+  .tear-circle.top { margin-top: -11px; }
+  .tear-circle.bottom { margin-bottom: -11px; margin-top: auto; }
+
+  /* RIGHT STUB */
+  .ticket-stub {
+    width: 170px;
+    flex-shrink: 0;
+    background: linear-gradient(160deg, #110a28 0%, #0a1828 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ticket-stub::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 18px,
+      #ffffff04 18px,
+      #ffffff04 19px
+    );
+  }
+
+  .stub-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: #c9a84c;
+    text-transform: uppercase;
+    writing-mode: horizontal-tb;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+  }
+
+
+
+  .stub-seat {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .stub-seat-label {
+    font-size: 0.5rem;
+    color: #7788aa;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+
+  .stub-seat-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: #fff;
+    letter-spacing: 0.15em;
+    line-height: 1;
+  }
+
+  .stub-event-mini {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .stub-event-mini-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    background: linear-gradient(135deg, #f0d080, #c9a84c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+  }
+
+  .stub-date-mini {
+    font-size: 0.58rem;
+    color: #8899bb;
+    letter-spacing: 0.15em;
+    margin-top: 4px;
+  }
+
+  /* TICKET NUMBER */
+  .ticket-number {
+    font-size: 0.5rem;
+    color: #44557766;
+    letter-spacing: 0.2em;
+    position: absolute;
+    bottom: 10px;
+    left: 36px;
+    z-index: 2;
+  }
+
+  /* PRINT BUTTON */
+  .actions {
+    margin-top: 28px;
+    display: flex;
+    gap: 14px;
+  }
+
+  .btn {
+    padding: 11px 28px;
+    border-radius: 8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #c9a84c, #f0d080);
+    color: #0a0a0f;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid #c9a84c66;
+    color: #c9a84c;
+  }
+  .btn-outline:hover { border-color: #c9a84c; background: #c9a84c11; }
+
+  @media print {
+    body { padding: 0; }
+    .actions { display: none; }
+    .ticket { box-shadow: none; }
+    .page-title { display: none; }
+  }
+
+  @media (max-width: 700px) {
+    .ticket { flex-direction: column; width: 100%; }
+    .event-title { font-size: 2.4rem; }
+    .tear-line { display: none; }
+    .ticket-stub { width: 100%; flex-direction: row; padding: 18px 24px; }
+    .stub-title { writing-mode: horizontal-tb; margin-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+
+<p class="page-title">✦ Invitation · Legislative Theatre 2026 ✦</p>
+
+<div class="ticket">
+
+  <!-- MAIN LEFT -->
+  <div class="ticket-main">
+
+    <!-- Top row -->
+    <div class="top-row">
+      <div class="org-block">
+        <div class="org-line">UCP Law Society <span>×</span> UCP Faculty of Law</div>
+        <div class="org-line">University of Central Punjab · Lahore</div>
+      </div>
+      <div class="ticket-type-badge">YOU'RE INVITED</div>
+    </div>
+
+    <!-- Title -->
+    <div class="title-block">
+      <div class="title-eyebrow">✦ &nbsp;Presents&nbsp; ✦</div>
+      <div class="event-title">Legislative<br>Theatre</div>
+      <div class="year-tag">— 2026 —</div>
+      <div class="play-name">بلا عنوان ۵ &nbsp;·&nbsp; Untitled 5</div>
+    </div>
+
+    <!-- Info row -->
+    <div class="info-row">
+      <div class="info-item">
+        <div class="info-label">Date</div>
+        <div class="info-value highlight">23 June</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Day</div>
+        <div class="info-value">Tuesday</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Time</div>
+        <div class="info-value">4:00 – 7:30</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Venue</div>
+        <div class="info-value">Auditorium</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Director</div>
+        <div class="info-value" style="font-size:1rem; padding-top:3px;">Naseem Abbas</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Name Section -->
+    <div class="name-section">
+      <div class="name-field">
+        <div class="name-avatar">✦</div>
+        <div class="name-input-area">
+          <div class="attendee-name blank" contenteditable="true" spellcheck="false" style="outline: none; cursor: text;" onfocus="if(this.innerText.trim()==='Your Name Here'){this.innerText=''; this.classList.remove('blank');}" onblur="if(this.innerText.trim()===''){this.innerText='Your Name Here'; this.classList.add('blank');}">Your Name Here</div>
+          <div class="attendee-role">Attendee · UCP</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TEAR LINE -->
+  <div class="tear-line">
+    <div class="tear-circle top"></div>
+    <div class="tear-circle bottom"></div>
+  </div>
+
+  <!-- RIGHT STUB -->
+  <div class="ticket-stub">
+    <div class="stub-event-mini">
+      <div class="stub-event-mini-title">LEGISLATIVE<br>THEATRE</div>
+      <div class="stub-date-mini">23 JUNE 2026</div>
+    </div>
+
+    <div style="text-align: center; margin: 20px 0;">
+      <div style="font-size: 0.7rem; color: #c9a84c; letter-spacing: 0.15em; text-transform: uppercase; line-height: 1.5;">
+        We welcome<br>you to join<br>this incredible<br>journey!
+      </div>
+    </div>
+
+    <div class="stub-seat">
+      <div class="stub-seat-label">Status</div>
+      <div class="stub-seat-value" style="font-size: 1.4rem;">WELCOME</div>
+      <div class="stub-seat-label" style="margin-top:2px;">Auditorium</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Action Buttons -->
+<div class="actions">
+  <button class="btn btn-primary" onclick="window.print()">🖨 &nbsp;Print Invitation</button>
+  <button class="btn btn-outline" onclick="downloadTicket()">⬇ &nbsp;Save as PDF</button>
+</div>
+
+<script>
+
+
+function downloadTicket() {
+  window.print();
+}
+</script>
+</body>
+</html>
